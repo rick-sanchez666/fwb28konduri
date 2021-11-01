@@ -2,15 +2,12 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}. Hi
-  button Press me
-  button(type="button", class="btn btn-secondary", onclick="update()") Left
-  div(id="target") Display
+  - results = [{company: 'Mercedes Benz', isAutomatic: true, makeYear: 2020}, {company: 'Audi', isAutomatic: false, makeYear: 2021},{company: 'BMW', isAutomatic: true, makeYear: 2010} ]
+  div(class="container-fluid")
+      each item in results
+        div(class="row")
+          div(class="col-sm-2")  #{item.company}
+          div(class="col-sm-2")  #{item.makeYear}
+          div(class="col-sm-2")  #{item.isAutomatic}
 
-  script. 
-    let client_count= 0
-    function update() {
-      client_count = client_count + 1
-      document.getElementById('target').innerText = `Value now ${client_count}`
-    }
-        
+
